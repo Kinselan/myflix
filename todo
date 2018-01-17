@@ -1,0 +1,7 @@
+hook up front page, register page (only email/pass/full-name), and sign-in page
+
+when you go to localhost:300, see front-page, click signup now, if you sign up without fields, show errors. if you sign in with errors, errors are displayed
+
+Questions:
+
+How does our relationship fabricator assign leader/follower? There is no code in it!
