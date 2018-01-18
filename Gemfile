@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+# ruby '2.1.2' # trying 2.1.0 to support old cedar stack on Heroku
+ruby '2.1.10'
 
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'coffee-rails'

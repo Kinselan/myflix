@@ -16,6 +16,8 @@ feature 'User following' do
 
     unfollow(alice)
     expect(page).not_to have_content(alice.full_name)
+
+    clear_email
   end
 
   def unfollow(user)

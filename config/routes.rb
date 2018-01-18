@@ -5,6 +5,7 @@ Myflix::Application.routes.draw do
 
   get  'home',             to: 'videos#index'
   get  '/register',        to: 'users#new'
+  get  '/register/:token', to: 'users#new_with_invitation_token', as: 'register_with_token'
   get  '/login',           to: 'sessions#new'
   post '/login',           to: 'sessions#create'
   get  '/logout',          to: 'sessions#destroy'
@@ -16,7 +17,7 @@ Myflix::Application.routes.draw do
   resources :forgot_passwords, only: [:create]
   resources :relationships, only: [:create, :destroy]
   resources :password_resets, only: [:show, :create] # chose :show because it expects an ID, which is user's token
-  get 'expired_token', to: 'password_resets#expired_token'
+  get 'expired_token', to: 'pages#expired_token'
 
   # below can't be in resources because we aren't updating a model,
   # but rather a collection of models:

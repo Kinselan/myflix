@@ -5,14 +5,22 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new
   end
 
+
+
   def create
     # binding.pry
     # Invitation.create(params[:invitation].merge!(inviter_id: current_user.id))
-    invitation = Invitation.create(invitation_params.merge!(inviter_id: current_user.id))
+    @invitation = Invitation.new(invitation_params.merge!(inviter_id: current_user.id))
     # @invitation = Invitation.   new(    invite_params.merge!(inviter_id: current_user.id))
     # binding.pry
-    AppMailer.send_invitation_email(invitation).deliver
-    redirect_to new_invitation_path
+    if @invitation.save
+      AppMailer.send_invitation_email(@invitation).deliver
+      flash[:success] = "Invitation sent!"
+      redirect_to new_invitation_path
+    else
+      flash[:error] = "Please fill in all the fields before sending invite."
+      render :new
+    end
   end
 
   private
