@@ -18,4 +18,8 @@ Myflix::Application.configure do
 
   config.active_support.deprecation = :notify
   config.action_mailer.default_url_options = { host: 'https://immense-dusk-34126.herokuapp.com/' }
+
+
+  # test if below will suppress mail delivery errors
+  config.action_mailer.raise_delivery_errors = false
 end
