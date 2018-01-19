@@ -20,16 +20,27 @@ Myflix::Application.configure do
   config.action_mailer.default_url_options = { host: 'https://immense-dusk-34126.herokuapp.com/' }
 
 
+  #
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => ENV['MAILGUN_SMTP_PORT'],
+  #   :address        => ENV['MAILGUN_SMTP_SERVER'],
+  #   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  #   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  #   :domain         => 'https://immense-dusk-34126.herokuapp.com',
+  #   :authentication => :plain,
+  # }
+  # ActionMailer::Base.delivery_method = :smtp
 
-  ActionMailer::Base.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'https://immense-dusk-34126.herokuapp.com',
-    :authentication => :plain,
-  }
-  ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SENDINBLUE_SMTP_SERVER'],
+    port:                 ENV['SENDINBLUE_SMTP_PORT'],
+    domain:               'immense-dusk-34126.herokuapp.com',
+    user_name:            ENV['SENDINBLUE_SMTP_LOGIN'],
+    password:             ENV['SENDINBLUE_SMTP_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 
 
   # enabling below will suppress email errors
