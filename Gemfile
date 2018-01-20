@@ -15,6 +15,7 @@ gem 'bcrypt'
 gem 'fabrication'
 gem 'faker'
 gem 'sidekiq', '3.0.0'
+gem "sentry-raven"
 
 group :development do
   gem 'thin'
